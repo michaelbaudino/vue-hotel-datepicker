@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
   .datepicker__wrapper(v-if='show' v-on-click-outside='clickOutside' @blur="clickOutside")
     .datepicker__close-button.-hide-on-desktop(v-if='isOpen' @click='hideDatepicker') ＋
     .datepicker__dummy-wrapper(  :class="`${isOpen ? 'datepicker__dummy-wrapper--is-active' : ''}` ")
@@ -57,7 +57,7 @@
             @keyup.enter.stop.prevent='renderNextMonth'
             :tabindex='isOpen ? 0 : -1'
           )
-        .datepicker__months(v-if='screenSize == "desktop"')
+        .datepicker__months(v-if='screenSize === "desktop"')
           div.datepicker__month(v-for='n in [0,1]'  v-bind:key='n')
             p.datepicker__month-name(v-text='getMonth(months[activeMonthIndex+n].days[15].date)')
             .datepicker__week-row.-hide-up-to-tablet
@@ -283,9 +283,9 @@
           if (value) {
             bodyClassList.add('-overflow-hidden');
             setTimeout(() => {
-              let swiperWrapper = document.getElementById('swiperWrapper')
-              let monthHeihgt = document.querySelector('.datepicker__month').offsetHeight
-              swiperWrapper.scrollTop = this.activeMonthIndex * monthHeihgt
+              const swiperWrapper = document.getElementById('swiperWrapper')
+              let monthEl = document.querySelector('.datepicker__month')
+              if (swiperWrapper && monthEl) swiperWrapper.scrollTop = this.activeMonthIndex * monthEl.offsetHeight
             },100)
           }
           else {
