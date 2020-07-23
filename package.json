@@ -4,7 +4,7 @@
 	"description": "A responsive date range picker for Vue.js that displays the number of nights selected and allow several useful options like custom check-in/check-out rules, localization support and more",
 	"author": "krystalcampioni <hello@krystalcampioni.com>",
 	"license": "MIT",
-	"main": "dist/vue-hotel-datepicker.min.js",
+	"main": "dist/vue-hotel-datepicker.js",
 	"files": [
 		"dist"
 	],
