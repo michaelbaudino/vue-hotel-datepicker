@@ -166,11 +166,11 @@
       },
       startingDateValue: {
         default: null,
-        type: Date
+        type: [Date, String]
       },
       endingDateValue: {
         default: null,
-        type: Date
+        type: [Date, String]
       },
       format: {
         default: 'YYYY-MM-DD',
@@ -253,8 +253,8 @@
     data() {
       return {
         hoveringDate: null,
-        checkIn: this.startingDateValue,
-        checkOut: this.endingDateValue,
+        checkIn: new Date(this.startingDateValue),
+        checkOut: new Date(this.endingDateValue),
         months: [],
         activeMonthIndex: 0,
         nextDisabledDate: null,
