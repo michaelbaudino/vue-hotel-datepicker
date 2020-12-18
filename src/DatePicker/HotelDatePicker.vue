@@ -650,21 +650,6 @@ export default {
             // eslint-disable-next-line no-useless-escape
             return string.replace(/\<br\/>/g, '')
         },
-        dateIsInCheckInCheckOut(date) {
-            const compareDate = this.dateFormater(date)
-            let currentPeriod = null
-
-            this.sortedPeriodDates.forEach(d => {
-                if (
-                    d.endAt !== compareDate &&
-                    (d.startAt === compareDate || this.validateDateBetweenTwoDates(d.startAt, d.endAt, compareDate))
-                ) {
-                    currentPeriod = d
-                }
-            })
-
-            return currentPeriod
-        },
         dayIsDisabled(date) {
             if (
                 this.checkIn &&
@@ -1080,13 +1065,9 @@ export default {
             if (this.sortedPeriodDates) {
                 let nextPeriod = null
                 let currentPeriod = null
-                const compareDate = this.dateFormater(date)
 
                 this.sortedPeriodDates.forEach(d => {
-                    if (
-                        d.endAt !== compareDate &&
-                        (d.startAt === compareDate || this.validateDateBetweenTwoDates(d.startAt, d.endAt, date))
-                    ) {
+                    if (this.validateDateBetweenTwoDates(d.startAt, d.endAt, date)) {
                         currentPeriod = d
                     }
                 })
