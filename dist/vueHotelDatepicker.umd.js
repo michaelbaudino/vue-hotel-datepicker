@@ -5247,7 +5247,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7b0baeef-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/DatePicker/HotelDatePicker.vue?vue&type=template&id=b9212bea&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7b0baeef-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/DatePicker/HotelDatePicker.vue?vue&type=template&id=1faf71e8&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.value)?_c('div',{ref:("DatePicker-" + _vm.hash),staticClass:"vhd__datepicker__wrapper",class:{
     'vhd__datepicker__wrapper--grid': _vm.gridStyle,
     'vhd__datepicker__wrapper--booking': _vm.bookings.length > 0,
@@ -5267,7 +5267,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/DatePicker/HotelDatePicker.vue?vue&type=template&id=b9212bea&
+// CONCATENATED MODULE: ./src/DatePicker/HotelDatePicker.vue?vue&type=template&id=1faf71e8&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -5867,17 +5867,17 @@ var fecha = {
 
 //# sourceMappingURL=fecha.js.map
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7b0baeef-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/DatePicker/components/Day.vue?vue&type=template&id=05d42a0f&
-var Dayvue_type_template_id_05d42a0f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.showTooltip && _vm.options.hoveringTooltip)?_c('div',{staticClass:"vhd__datepicker__tooltip",domProps:{"innerHTML":_vm._s(_vm.tooltipMessageDisplay)}}):_vm._e(),_c('div',{ref:"day",staticClass:"vhd__datepicker__month-day",class:[
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7b0baeef-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/DatePicker/components/Day.vue?vue&type=template&id=fd0078de&
+var Dayvue_type_template_id_fd0078de_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.showTooltip && _vm.options.hoveringTooltip)?_c('div',{staticClass:"vhd__datepicker__tooltip",domProps:{"innerHTML":_vm._s(_vm.tooltipMessageDisplay)}}):_vm._e(),_c('div',{ref:"day",staticClass:"vhd__datepicker__month-day",class:[
       _vm.dayClass,
       _vm.disabledClass,
       _vm.checkinCheckoutClass,
       _vm.bookingClass,
       { 'vhd__datepicker__month-day--today': _vm.isToday } ],attrs:{"tabindex":_vm.tabIndex},on:{"click":function($event){$event.preventDefault();$event.stopPropagation();return _vm.dayClicked($event, _vm.date)}}},[_c('div',{staticClass:"vhd__datepicker__month-day-wrapper"},[_c('span',[_vm._v(_vm._s(_vm.dayNumber))]),(_vm.showPrice && _vm.dayPrice)?_c('strong',{staticStyle:{"font-size":"10px"}},[_vm._v(" "+_vm._s(_vm.dayPrice)+" ")]):_vm._e()])]),(_vm.currentBooking && _vm.belongsToThisMonth && !_vm.isDisabled)?_c('BookingBullet',{attrs:{"currentBooking":_vm.currentBooking,"duplicateBookingDates":_vm.duplicateBookingDates,"formatDate":_vm.formatDate,"previousBooking":_vm.previousBooking}}):_vm._e()],1)}
-var Dayvue_type_template_id_05d42a0f_staticRenderFns = []
+var Dayvue_type_template_id_fd0078de_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/DatePicker/components/Day.vue?vue&type=template&id=05d42a0f&
+// CONCATENATED MODULE: ./src/DatePicker/components/Day.vue?vue&type=template&id=fd0078de&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
 var es_array_some = __webpack_require__("45fc");
@@ -6326,6 +6326,7 @@ var component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -6508,9 +6509,12 @@ var component = normalizeComponent(
     currentBooking: function currentBooking() {
       var _this2 = this;
 
-      return this.bookings.find(function (booking) {
+      var result = this.bookings.find(function (booking) {
         return _this2.duplicateBookingDates.includes(_this2.formatDate) && booking.checkInDate === _this2.formatDate || !_this2.duplicateBookingDates.includes(_this2.formatDate) && _this2.validateDateBetweenTwoDates(booking.checkInDate, booking.checkOutDate, _this2.formatDate);
       });
+      console.log("currentBooking(".concat(this.formatDate, ") = "), result); // eslint-disable-line
+
+      return result;
     },
     dayNumber: function dayNumber() {
       return lib_fecha.format(this.date, 'D');
@@ -6535,24 +6539,28 @@ var component = normalizeComponent(
 
       return '';
     },
+    // This method sets 2 kind of classes:
+    //   `...--halfCheckIn`/`...--halfCheckOut` display triangles to notify user that only check-in or check-out can be chosen that day
+    //   `...--valid`/`...--invalid` define if this day can be selected (depending on whether the use is currently looking for a check-in or check-out date)
     halfDayClass: function halfDayClass() {
-      if (Object.keys(this.checkIncheckOutHalfDay).length > 0) {
-        var keyDate = this.dateFormater(this.date);
+      var keyDate = this.dateFormater(this.date);
+      var classes = [];
+      if (this.checkIncheckOutHalfDay[keyDate] === undefined) return '';
 
-        if (this.checkIncheckOutHalfDay[keyDate] && this.checkIncheckOutHalfDay[keyDate].checkIn) {
-          if (this.checkIn && !this.checkOut) {
-            return 'vhd__datepicker__month-day--halfCheckIn vhd__datepicker__month-day--valid';
-          }
-
-          return 'vhd__datepicker__month-day--halfCheckIn vhd__datepicker__month-day--invalid';
-        }
-
-        if (this.checkIncheckOutHalfDay[keyDate] && this.checkIncheckOutHalfDay[keyDate].checkOut) {
-          return 'vhd__datepicker__month-day--halfCheckOut vhd__datepicker__month-day--valid';
-        }
+      if (this.checkIncheckOutHalfDay[keyDate].checkIn && this.checkIncheckOutHalfDay[keyDate].checkOut) {
+        // there are already both a check-in and a check-out scheduled that day: it cannot be chosen at all
+        classes.push('vhd__datepicker__month-day--invalid');
+      } else if (this.checkIncheckOutHalfDay[keyDate].checkIn) {
+        // there's already a check-in scheduled that day: it can only be picked as a check-out
+        classes.push('vhd__datepicker__month-day--halfCheckIn');
+        classes.push("vhd__datepicker__month-day--".concat(this.checkIn && !this.checkOut ? 'valid' : 'invalid'));
+      } else if (this.checkIncheckOutHalfDay[keyDate].checkOut) {
+        // there's already a check-out scheduled that day: it can only be chosen as a check-in
+        classes.push('vhd__datepicker__month-day--halfCheckOut');
+        classes.push("vhd__datepicker__month-day--".concat(!this.checkIn ? 'valid' : 'invalid'));
       }
 
-      return false;
+      return classes.join(' ');
     },
     bookingClass: function bookingClass() {
       if (this.bookings.length > 0 && this.currentBooking) {
@@ -6595,8 +6603,10 @@ var component = normalizeComponent(
 
       return '';
     },
+    // This method sets the `...--disabled` class meaning that this day was explicitely disabled
+    // via the `disabledDates` or `disabledWeekDays` props
     disabledClass: function disabledClass() {
-      return this.isDisabled || this.isADisabledDay ? ' vhd__datepicker__month-day--disabled ' : '';
+      return this.isDisabled || this.isADisabledDay ? 'vhd__datepicker__month-day--disabled' : '';
     },
     dayClass: function dayClass() {
       if (!this.belongsToThisMonth) {
@@ -6955,8 +6965,8 @@ var component = normalizeComponent(
 
 var Day_component = normalizeComponent(
   components_Dayvue_type_script_lang_js_,
-  Dayvue_type_template_id_05d42a0f_render,
-  Dayvue_type_template_id_05d42a0f_staticRenderFns,
+  Dayvue_type_template_id_fd0078de_render,
+  Dayvue_type_template_id_fd0078de_staticRenderFns,
   false,
   null,
   null,
@@ -8311,8 +8321,10 @@ var DateInput_component = normalizeComponent(
       var sortedDates = [];
       var checkIncheckOutHalfDay = {};
 
-      var baseHalfDayDates = _toConsumableArray(_baseHalfDayDates); // Sorted disabledDates
+      var baseHalfDayDates = _toConsumableArray(_baseHalfDayDates);
 
+      console.log("createHalfDayDates()"); // eslint-disable-line
+      // Sorted disabledDates
 
       baseHalfDayDates.sort(function (a, b) {
         var aa = a.split('/').reverse().join();
@@ -8320,6 +8332,9 @@ var DateInput_component = normalizeComponent(
 
         return aa < bb ? -1 : aa > bb ? 1 : 0;
       });
+      console.log("baseHalfDayDates = ", baseHalfDayDates); // eslint-disable-line
+
+      console.log("this.sortBookings = ", this.sortBookings); // eslint-disable-line
 
       if (this.sortBookings.length === 0) {
         for (var i = 0; i < baseHalfDayDates.length; i++) {
@@ -8354,12 +8369,12 @@ var DateInput_component = normalizeComponent(
         }
       } else {
         this.sortBookings.forEach(function (booking) {
-          checkIncheckOutHalfDay[booking.checkInDate] = {
-            checkIn: true
-          };
-          checkIncheckOutHalfDay[booking.checkOutDate] = {
-            checkOut: true
-          };
+          var _booking$checkInDate, _booking$checkOutDate;
+
+          checkIncheckOutHalfDay[_booking$checkInDate = booking.checkInDate] || (checkIncheckOutHalfDay[_booking$checkInDate] = {});
+          checkIncheckOutHalfDay[booking.checkInDate].checkIn = true;
+          checkIncheckOutHalfDay[_booking$checkOutDate = booking.checkOutDate] || (checkIncheckOutHalfDay[_booking$checkOutDate] = {});
+          checkIncheckOutHalfDay[booking.checkOutDate].checkOut = true;
         });
       }
 

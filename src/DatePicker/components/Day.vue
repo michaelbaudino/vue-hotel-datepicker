@@ -161,12 +161,15 @@ export default {
       return previousBooking
     },
     currentBooking() {
-      return this.bookings.find(
+      const result = this.bookings.find(
         (booking) =>
           (this.duplicateBookingDates.includes(this.formatDate) && booking.checkInDate === this.formatDate) ||
           (!this.duplicateBookingDates.includes(this.formatDate) &&
             this.validateDateBetweenTwoDates(booking.checkInDate, booking.checkOutDate, this.formatDate)),
       )
+      console.log(`currentBooking(${this.formatDate}) = `, result) // eslint-disable-line
+
+      return result
     },
     dayNumber() {
       return fecha.format(this.date, 'D')
@@ -190,24 +193,29 @@ export default {
 
       return ''
     },
+    // This method sets 2 kind of classes:
+    //   `...--halfCheckIn`/`...--halfCheckOut` display triangles to notify user that only check-in or check-out can be chosen that day
+    //   `...--valid`/`...--invalid` define if this day can be selected (depending on whether the use is currently looking for a check-in or check-out date)
     halfDayClass() {
-      if (Object.keys(this.checkIncheckOutHalfDay).length > 0) {
-        const keyDate = this.dateFormater(this.date)
+      const keyDate = this.dateFormater(this.date)
+      const classes = []
 
-        if (this.checkIncheckOutHalfDay[keyDate] && this.checkIncheckOutHalfDay[keyDate].checkIn) {
-          if (this.checkIn && !this.checkOut) {
-            return 'vhd__datepicker__month-day--halfCheckIn vhd__datepicker__month-day--valid'
-          }
+      if (this.checkIncheckOutHalfDay[keyDate] === undefined) return ''
 
-          return 'vhd__datepicker__month-day--halfCheckIn vhd__datepicker__month-day--invalid'
-        }
-
-        if (this.checkIncheckOutHalfDay[keyDate] && this.checkIncheckOutHalfDay[keyDate].checkOut) {
-          return 'vhd__datepicker__month-day--halfCheckOut vhd__datepicker__month-day--valid'
-        }
+      if (this.checkIncheckOutHalfDay[keyDate].checkIn && this.checkIncheckOutHalfDay[keyDate].checkOut) {
+        // there are already both a check-in and a check-out scheduled that day: it cannot be chosen at all
+        classes.push('vhd__datepicker__month-day--invalid')
+      } else if (this.checkIncheckOutHalfDay[keyDate].checkIn) {
+        // there's already a check-in scheduled that day: it can only be picked as a check-out
+        classes.push('vhd__datepicker__month-day--halfCheckIn')
+        classes.push(`vhd__datepicker__month-day--${this.checkIn && !this.checkOut ? 'valid' : 'invalid'}`)
+      } else if (this.checkIncheckOutHalfDay[keyDate].checkOut) {
+        // there's already a check-out scheduled that day: it can only be chosen as a check-in
+        classes.push('vhd__datepicker__month-day--halfCheckOut')
+        classes.push(`vhd__datepicker__month-day--${!this.checkIn ? 'valid' : 'invalid'}`)
       }
 
-      return false
+      return classes.join(' ')
     },
     bookingClass() {
       if (this.bookings.length > 0 && this.currentBooking) {
@@ -261,8 +269,10 @@ export default {
 
       return ''
     },
+    // This method sets the `...--disabled` class meaning that this day was explicitely disabled
+    // via the `disabledDates` or `disabledWeekDays` props
     disabledClass() {
-      return this.isDisabled || this.isADisabledDay ? ' vhd__datepicker__month-day--disabled ' : ''
+      return this.isDisabled || this.isADisabledDay ? 'vhd__datepicker__month-day--disabled' : ''
     },
     dayClass() {
       if (!this.belongsToThisMonth) {

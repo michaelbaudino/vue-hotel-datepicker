@@ -1265,6 +1265,8 @@ export default {
       const checkIncheckOutHalfDay = {}
       const baseHalfDayDates = [..._baseHalfDayDates]
 
+      console.log("createHalfDayDates()") // eslint-disable-line
+
       // Sorted disabledDates
       baseHalfDayDates.sort((a, b) => {
         const aa = a.split('/').reverse().join()
@@ -1273,6 +1275,9 @@ export default {
         // eslint-disable-next-line no-nested-ternary
         return aa < bb ? -1 : aa > bb ? 1 : 0
       })
+
+      console.log("baseHalfDayDates = ", baseHalfDayDates) // eslint-disable-line
+      console.log("this.sortBookings = ", this.sortBookings) // eslint-disable-line
 
       if (this.sortBookings.length === 0) {
         for (let i = 0; i < baseHalfDayDates.length; i++) {
@@ -1311,12 +1316,10 @@ export default {
         }
       } else {
         this.sortBookings.forEach((booking) => {
-          checkIncheckOutHalfDay[booking.checkInDate] = {
-            checkIn: true,
-          }
-          checkIncheckOutHalfDay[booking.checkOutDate] = {
-            checkOut: true,
-          }
+          checkIncheckOutHalfDay[booking.checkInDate] ||= {}
+          checkIncheckOutHalfDay[booking.checkInDate].checkIn = true
+          checkIncheckOutHalfDay[booking.checkOutDate] ||= {}
+          checkIncheckOutHalfDay[booking.checkOutDate].checkOut = true
         })
       }
 
